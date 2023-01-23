@@ -1,2 +1,3 @@
-# Speak_with_ChatGPT
-A simple python-only code to have a voice conversation with ChatGPT. 
+# Speak with ChatGPT
+
+A simple Python-only code to have a voice conversation with ChatGPT. 
