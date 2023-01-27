@@ -78,6 +78,7 @@ class SpeakAI(object):
                 with sr.Microphone() as source:
 
                     print("{0}: (Ask anything from ChatGPT ...)".format(USER))
+                    self.r.adjust_for_ambient_noise(source)
                     # listen for USER input
                     audio = self.r.listen(source)
 
