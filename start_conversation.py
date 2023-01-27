@@ -27,8 +27,7 @@ class SpeakAI(object):
     # given text, read it out loud using Google Assistant.
     # Return if the user still wants to continue the conversation
     def speak_text(self,
-                   text,
-                   conversation_history):
+                   text):
         try:
             engine = pyttsx3.init()
             engine.say(text)
@@ -85,7 +84,8 @@ class SpeakAI(object):
                     # Using Google Assistant to recognize audio
                     inputText = self.r.recognize_google(audio)
                     inputText = inputText.lower()
-                    conversation_history += "USER:: {0}. ".format(inputText)
+                    conversation_history += "{0}:: {1}. ".format(
+                        USER, inputText)
 
                     conversation_history, chatGPT_response = self.get_conversation(
                         conversation_history, AI, n=10)
@@ -93,10 +93,10 @@ class SpeakAI(object):
                     print("{0}: {1} ".format(AI, chatGPT_response))
                     try:
                         continue_conversation = self.speak_text(chatGPT_response.split(
-                            "::", 1)[1], conversation_history)
+                            "::", 1)[1])
                     except:
                         continue_conversation = self.speak_text(
-                            chatGPT_response, conversation_history)
+                            chatGPT_response)
 
                     if not continue_conversation:
                         print(
